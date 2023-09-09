@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Word of the Day...",
+    "version": "1.0.0",
+
+    // Recommended
+    // "action": {... },
+    "default_locale": "en",
+    "description": "A web extension to learn a new word a day ...",
+    // "icons": {... },
+
+    // Optional
+    "author": "nomorelonelyfriendsdc@gmail.com",
+    "chrome_url_overrides": {
+        "newtab": "newtab.html"
+    },
+
+    "background" :{
+        "service_worker" : "background.js"
+        // "type" : "module"
+    }
+}
+
+// // background-wrapper.js file
+// try {
+//     importScripts("background.html");
+//   } catch (e) {
+//     console.error(e);
+//   }
