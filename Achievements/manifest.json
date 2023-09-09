@@ -1,0 +1,17 @@
+{
+    "manifest_version": 3,
+    "name": "Daily Achievement...",
+    "version": "1.0.0",
+
+    // Recommended
+    "action": {... },
+    "default_locale": "en",
+    "description": "A web extension to track your work for recap...",
+    "icons": {... },
+
+    // Optional
+    "author": "leetcode127@gmail.com",
+    "chrome_url_overrides": {
+        "newtab": "newtab.html"
+    }
+}
