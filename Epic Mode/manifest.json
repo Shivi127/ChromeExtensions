@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Epic Mode",
+  "version": "1.0.0",
+  "description": "Epic Mode - Play tracks from drop down.",
+  "author": "nomorelonelyfriendsdc@gmail.com",
+	"browser_action": {
+		"default_title": "Epic Mode",
+		"default_popup": "popout.html"
+	},
+  "background":{
+    "service_worker" : "background.js"
+  }
+  
+}
