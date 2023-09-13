@@ -1,23 +1,27 @@
+async function createOffscreen() {
+  if (await chrome.offscreen.hasDocument()) return;
+  await chrome.offscreen.createDocument({
+    url: "offscreen.html",
+    reasons: ["AUDIO_PLAYBACK"],
+    justification: "testing",
+  });
+}
 
 
-
-//Listen for messages
-chrome.runtime.onMessage.addListener((msg, sender, response) => {
-
-  if(msg.name == "playTrack"){
-
-    //...
-    var trackName = msg.track;
-    var audioEle = document.querySelector('.audio-element');
-    audioEle.src = 'track-'+trackName+'.mp3';
-    audioEle.play();
-
+chrome.runtime.onMessage.addListener(async (msg) => {
+  console.log("I am here, select me please msg", msg)
+  switch (msg.name) {
+    case "playTrack":
+      await createOffscreen();
+      await chrome.runtime.sendMessage({
+        name: "playTrack",
+        track: msg.track,
+        offscreen: true,
+      });
+      break;
+    case "pauseTrack":
+      await createOffscreen();
+      await chrome.runtime.sendMessage({ name: "pauseTrack", offscreen: true });
+      break;
   }
-
-  if(msg.name == "pauseTrack"){
-
-    var audioEle = document.querySelector('.audio-element');
-    audioEle.pause();
-  }
-
 });
