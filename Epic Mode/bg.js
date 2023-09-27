@@ -9,7 +9,6 @@ async function createOffscreen() {
 
 
 chrome.runtime.onMessage.addListener(async (msg) => {
-  console.log("I am here, select me please msg", msg)
   switch (msg.name) {
     case "playTrack":
       await createOffscreen();

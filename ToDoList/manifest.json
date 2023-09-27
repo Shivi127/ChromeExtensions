@@ -1,0 +1,12 @@
+{
+  "name": "To Do List",
+  "version": "1.0.0",
+  "author": "nomorelonelyfriendsdc@gmail.com",
+  "description": "To Do List.",
+	"action": {
+		"default_title": "To Do List",
+		"default_popup": "popout.html"
+	},
+  "permissions": ["offscreen"],
+  "manifest_version": 3
+}
