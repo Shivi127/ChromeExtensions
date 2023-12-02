@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const noteInput = document.getElementById('note-input');
-    const personalTag = document.getElementById('tag-personal');
-    const workTag = document.getElementById('tag-work');
-    const otherTag = document.getElementById('tag-other');
+    const personalTag = document.getElementById('tag-small-win');
+    const workTag = document.getElementById('tag-medium-win');
+    const otherTag = document.getElementById('tag-big-win');
     const addNoteButton = document.getElementById('add-note');
     const notesContainer = document.getElementById('notes-container');
 
