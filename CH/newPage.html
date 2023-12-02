@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Page</title>
+    <link rel="stylesheet" href="newPage.css">
+    <title>Planner</title>
 </head>
 <body>
-    <div>
-        <label for="text-input">Enter text:</label>
-        <input type="text" id="text-input" placeholder="Type something...">
+    <div id="planner-container">
+        <h1>Planner</h1>
+        <p id="current-date"></p>
+        <textarea id="note-input" placeholder="Type your note here"></textarea>
+        <button id="save-button">Save Note</button>
+        <div id="previous-notes">
+            <h2>Previous Notes</h2>
+            <ul id="notes-list"></ul>
+        </div>
     </div>
     <script src="newPage.js"></script>
 </body>

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const saveButton = document.getElementById('save-button');
     const popupHourSelect = document.getElementById('popup-hour');
     const popupMinuteSelect = document.getElementById('popup-minute');
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const storedTimeValue = document.getElementById('stored-time-value');
 
     // Load the stored popup time and set the dropdown values
-    chrome.storage.sync.get(['popupTime'], function(result) {
+    chrome.storage.sync.get(['popupTime'], function (result) {
         const storedTime = result.popupTime;
         if (storedTime) {
             const storedDate = new Date(storedTime);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    saveButton.addEventListener('click', function() {
+    saveButton.addEventListener('click', function () {
         const selectedHour = popupHourSelect.value;
         const selectedMinute = popupMinuteSelect.value;
         const selectedAmPm = popupAmPmSelect.value;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const popupTime = new Date().setHours(hour24, selectedMinute);
 
-        chrome.storage.sync.set({ popupTime: popupTime }, function() {
+        chrome.storage.sync.set({ popupTime: popupTime }, function () {
             console.log('Popup time set:', new Date(popupTime).toLocaleTimeString());
 
             // Display the stored value underneath the dropdown
@@ -52,9 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Function to format time for display
+    // Function to format time
     function formatTime(hour, minute, amPm) {
-        return hour + ':' + (minute < 10 ? '0' : '') + minute + ' ' + amPm;
+        const formattedHour = (hour % 12 || 12).toString();
+        const formattedMinute = minute.toString().padStart(2, '0');
+        const formattedAmPm = amPm.toLowerCase();
+        return `${formattedHour}:${formattedMinute} ${formattedAmPm}`;
     }
 
     // Function to populate a dropdown with options
