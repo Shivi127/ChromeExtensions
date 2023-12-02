@@ -81,9 +81,4 @@ document.addEventListener('DOMContentLoaded', function () {
             option.selected = true;
         }
     }
-
-    // Event listener to open options page
-    openOptionsPageLink.addEventListener('click', function () {
-        chrome.runtime.openOptionsPage();
-    });
 });
