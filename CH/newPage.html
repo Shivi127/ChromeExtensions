@@ -8,15 +8,37 @@
     <title>Planner</title>
 </head>
 <body>
-    <div id="planner-container">
+    <div id="planner-content">
+
         <h1>Planner</h1>
-        <p id="current-date"></p>
-        <textarea id="note-input" placeholder="Type your note here"></textarea>
-        <button id="save-button">Save Note</button>
-        <div id="previous-notes">
-            <h2>Previous Notes</h2>
-            <ul id="notes-list"></ul>
+
+        <div class="tag-container">
+            <label>Tag:</label>
+            <div class="radio-container">
+                <input type="radio" id="tag-personal" name="tag" value="Personal" checked>
+                <label for="tag-personal">Personal</label>
+            </div>
+            <div class="radio-container">
+                <input type="radio" id="tag-work" name="tag" value="Work">
+                <label for="tag-work">Work</label>
+            </div>
+            <div class="radio-container">
+                <input type="radio" id="tag-other" name="tag" value="Other">
+                <label for="tag-other">Other</label>
+            </div>
         </div>
+
+        <div class="input-container">
+            <label for="note-input">Add Note:</label>
+            <textarea id="note-input" rows="4"></textarea>
+        </div>
+
+        <button id="add-note">Add Note</button>
+
+        <div id="notes-container">
+            <!-- Display notes here -->
+        </div>
+
     </div>
     <script src="newPage.js"></script>
 </body>

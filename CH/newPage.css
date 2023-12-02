@@ -1,75 +1,44 @@
 body {
-    min-width: 300px;
-    min-height: 400px;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
     font-family: 'Arial', sans-serif;
-}
-
-#planner-container {
+    padding: 20px;
     text-align: center;
 }
 
-h1, h2 {
-    color: #333;
+#planner-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-#current-date {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #555;
+h1 {
+    color: #3498db;
 }
 
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+.tag-container {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#save-button {
-    padding: 10px;
-    font-size: 14px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+h2 {
+    color: #3498db;
 }
 
-#save-button:hover {
-    background-color: #45a049;
-}
-
-#previous-notes {
-    margin-top: 20px;
-}
-
-#notes-list {
-    list-style: none;
+ul {
+    list-style-type: none;
     padding: 0;
 }
 
-.note-item {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #fff;
-    display: flex;
-    justify-content: space-between;
+li {
+    margin-bottom: 10px;
 }
 
-.delete-button {
-    background-color: #ff6961;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 5px;
-    cursor: pointer;
+.note {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

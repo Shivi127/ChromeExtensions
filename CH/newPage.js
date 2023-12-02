@@ -1,64 +1,83 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const currentDateElement = document.getElementById('current-date');
+document.addEventListener('DOMContentLoaded', function () {
     const noteInput = document.getElementById('note-input');
-    const saveButton = document.getElementById('save-button');
-    const notesList = document.getElementById('notes-list');
+    const personalTag = document.getElementById('tag-personal');
+    const workTag = document.getElementById('tag-work');
+    const otherTag = document.getElementById('tag-other');
+    const addNoteButton = document.getElementById('add-note');
+    const notesContainer = document.getElementById('notes-container');
 
-    // Display current date
-    const currentDate = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    currentDateElement.textContent = currentDate.toLocaleDateString('en-US', options);
+    // Store notes in an object where keys are tags and values are arrays of notes
+    const noteData = {
+        Personal: [],
+        Work: [],
+        Other: []
+    };
 
-    // Load notes from localStorage
-    loadNotes();
+    addNoteButton.addEventListener('click', function () {
+        const noteText = noteInput.value;
+        const selectedTag = getSelectedTag();
 
-    // Save note button click event
-    saveButton.addEventListener('click', function() {
-        const noteText = noteInput.value.trim();
-        if (noteText !== '') {
-            saveNoteToLocalStorage(noteText);
-            noteInput.value = ''; // Clear input after saving
-            loadNotes(); // Reload notes
+        if (noteText.trim() !== '' && selectedTag) {
+            // Add note to the corresponding tag
+            noteData[selectedTag].push(noteText);
+
+            // Display notes
+            displayNotes();
+
+            // Clear input field
+            noteInput.value = '';
         }
     });
 
-    // Function to save note to localStorage
-    function saveNoteToLocalStorage(note) {
-        const notes = JSON.parse(localStorage.getItem('notes')) || [];
-        notes.push({ text: note, timestamp: new Date().getTime() });
-        localStorage.setItem('notes', JSON.stringify(notes));
+    function getSelectedTag() {
+        if (personalTag.checked) {
+            return 'Personal';
+        } else if (workTag.checked) {
+            return 'Work';
+        } else if (otherTag.checked) {
+            return 'Other';
+        }
+
+        return null; // No tag selected
     }
 
-    // Function to load notes from localStorage and display them
-    function loadNotes() {
-        const notes = JSON.parse(localStorage.getItem('notes')) || [];
-        notesList.innerHTML = '';
-        notes.forEach(note => {
-            const noteItem = document.createElement('li');
-            noteItem.classList.add('note-item');
+    function displayNotes() {
+        // Clear existing content
+        notesContainer.innerHTML = '';
 
-            const noteText = document.createElement('div');
-            noteText.textContent = note.text;
+        // Display notes for each tag
+        for (const [tag, notes] of Object.entries(noteData)) {
+            // Create a container for each tag
+            const tagContainer = document.createElement('div');
+            tagContainer.classList.add('tag-container');
 
-            const deleteButton = document.createElement('button');
-            deleteButton.classList.add('delete-button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.addEventListener('click', function() {
-                deleteNoteFromLocalStorage(note.timestamp);
-                loadNotes();
+            // Display tag as title
+            const tagTitle = document.createElement('h2');
+            tagTitle.textContent = `${tag} Tasks`;
+            tagContainer.appendChild(tagTitle);
+
+            // Display notes for the tag
+            const notesList = document.createElement('ul');
+            notes.forEach(noteText => {
+                const noteElement = createNoteElement(noteText);
+                const listItem = document.createElement('li');
+                listItem.appendChild(noteElement);
+                notesList.appendChild(listItem);
             });
 
-            noteItem.appendChild(noteText);
-            noteItem.appendChild(deleteButton);
+            tagContainer.appendChild(notesList);
 
-            notesList.appendChild(noteItem);
-        });
+            // Append the tag container to the main container
+            notesContainer.appendChild(tagContainer);
+        }
     }
 
-    // Function to delete note from localStorage
-    function deleteNoteFromLocalStorage(timestamp) {
-        const notes = JSON.parse(localStorage.getItem('notes')) || [];
-        const updatedNotes = notes.filter(note => note.timestamp !== timestamp);
-        localStorage.setItem('notes', JSON.stringify(updatedNotes));
+    function createNoteElement(noteText) {
+        const noteElement = document.createElement('p');
+        noteElement.textContent = noteText;
+        return noteElement;
     }
+
+    // Initial display
+    displayNotes();
 });
