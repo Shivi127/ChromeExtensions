@@ -4,24 +4,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const popupMinuteSelect = document.getElementById('popup-minute');
     const popupAmPmSelect = document.getElementById('popup-am-pm');
     const storedTimeValue = document.getElementById('stored-time-value');
+    const openOptionsPageLink = document.getElementById('open-options-page');
 
     // Load the stored popup time and set the dropdown values
     chrome.storage.sync.get(['popupTime'], function (result) {
         const storedTime = result.popupTime;
         if (storedTime) {
             const storedDate = new Date(storedTime);
-            const storedHour = storedDate.getHours() % 12 || 12; // Convert 0 to 12
+            const storedHour = storedDate.getHours();
             const storedMinute = storedDate.getMinutes();
-            const storedAmPm = storedDate.getHours() >= 12 ? 'PM' : 'AM';
+            const storedAmPm = storedHour >= 12 ? 'PM' : 'AM';
 
-            populateDropdown(popupHourSelect, 1, 12, storedHour);
+            populateDropdown(popupHourSelect, 1, 12, storedHour % 12 || 12);
             populateDropdown(popupMinuteSelect, 0, 59, storedMinute);
             setDropdownValue(popupAmPmSelect, storedAmPm);
 
             // Display the stored value underneath the dropdown
             storedTimeValue.textContent = formatTime(storedHour, storedMinute, storedAmPm);
         } else {
-            // Default value for 5 PM
+            // Default value for 5:00 PM
             setDropdownValue(popupHourSelect, '05');
             setDropdownValue(popupMinuteSelect, '00');
             setDropdownValue(popupAmPmSelect, 'PM');
@@ -80,4 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
             option.selected = true;
         }
     }
+
+    // Event listener to open options page
+    openOptionsPageLink.addEventListener('click', function () {
+        chrome.runtime.openOptionsPage();
+    });
 });
