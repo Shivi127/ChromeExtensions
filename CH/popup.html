@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>Time Popup</title>
+</head>
+<body>
+    <div id="popup-content">
+        <div id="stored-time">Popup Time: <span id="stored-time-value"></span></div>
+
+        <label for="popup-hour">Hour:</label>
+        <select id="popup-hour"></select>
+
+        <label for="popup-minute">Minute:</label>
+        <select id="popup-minute"></select>
+
+        <label for="popup-am-pm">AM/PM:</label>
+        <select id="popup-am-pm">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+
+        <div class="button-container">
+            <button id="save-button">Save</button>
+        </div>
+
+        
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
