@@ -2,6 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     padding: 20px;
     text-align: center;
+    background-color: #f8f9fa;
 }
 
 #planner-content {
@@ -10,35 +11,42 @@ body {
 }
 
 h1 {
-    color: #3498db;
+    color: #007bff;
 }
 
 .tag-container {
     display: inline-block;
     margin: 20px;
     padding: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
     border-radius: 8px;
     width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center; /* Center children horizontally */
 }
 
 h2 {
-    color: #3498db;
+    color: #007bff;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+    width: 100%; /* Occupy the full width of the tag container */
 }
 
 li {
     margin-bottom: 10px;
+    width: 100%; /* Occupy the full width of the list item */
 }
 
 .note {
-    border: 1px solid #ddd;
+    border: 1px solid #ced4da;
     padding: 10px;
     border-radius: 4px;
+    background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* width: 100%; Occupy the full width of the list item */
 }
