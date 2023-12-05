@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     const noteInput = document.getElementById('note-input');
-    const personalTag = document.getElementById('tag-small-win');
-    const workTag = document.getElementById('tag-medium-win');
-    const otherTag = document.getElementById('tag-big-win');
+    const BigTag = document.getElementById('tag-small-win');
+    const MediumTag = document.getElementById('tag-medium-win');
+    const SmallTag = document.getElementById('tag-big-win');
     const addNoteButton = document.getElementById('add-note');
     const notesContainer = document.getElementById('notes-container');
 
     // Store notes in an object where keys are tags and values are arrays of notes
     const noteData = {
-        Personal: [],
-        Work: [],
-        Other: []
+        Big: [],
+        Medium: [],
+        Small: []
     };
 
     addNoteButton.addEventListener('click', function () {
@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function getSelectedTag() {
-        if (personalTag.checked) {
-            return 'Personal';
-        } else if (workTag.checked) {
-            return 'Work';
-        } else if (otherTag.checked) {
-            return 'Other';
+        if (BigTag.checked) {
+            return 'Big';
+        } else if (MediumTag.checked) {
+            return 'Medium';
+        } else if (SmallTag.checked) {
+            return 'Small';
         }
 
         return null; // No tag selected
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Display tag as title
             const tagTitle = document.createElement('h2');
-            tagTitle.textContent = `${tag} Tasks`;
+            tagTitle.textContent = `${tag} Wins`;
             tagContainer.appendChild(tagTitle);
 
             // Display notes for the tag
