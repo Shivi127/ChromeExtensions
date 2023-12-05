@@ -14,6 +14,39 @@ h1 {
     color: #007bff;
 }
 
+.tag-options {
+    margin-top: 20px; /* Increase spacing between radio buttons */
+    display: flex;
+    justify-content: center; /* Center-align tags */
+}
+
+.edit{
+    width:33%
+}
+
+.tag-options label {
+    display: inline-block;
+    margin: 30%; /* Increase spacing between radio buttons */
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tag-options label:hover {
+    background-color: #0056b3;
+}
+
+.tag-options input {
+    display: none;
+}
+
+.tag-options input:checked + label {
+    background-color: #0056b3;
+}
+
 .tag-container {
     display: inline-block;
     margin: 20px;
@@ -24,6 +57,20 @@ h1 {
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
+    display: -webkit-inline-box;
+}
+
+.tag-container2 {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Display children in a column layout */
     align-items: center; /* Center children horizontally */
 }
 
@@ -48,5 +95,5 @@ li {
     border-radius: 4px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* width: 100%; Occupy the full width of the list item */
+    width: 100%; /* Occupy the full width of the list item */
 }

@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (const [tag, notes] of Object.entries(noteData)) {
             // Create a container for each tag
             const tagContainer = document.createElement('div');
-            tagContainer.classList.add('tag-container');
+            tagContainer.classList.add('tag-container2');
 
             // Display tag as title
             const tagTitle = document.createElement('h2');
