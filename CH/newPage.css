@@ -97,3 +97,35 @@ li {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%; /* Occupy the full width of the list item */
 }
+
+
+.radio-container label{
+    padding: 2px;
+}
+
+.tag-container label{
+    font-size: small;
+    padding: 2px;
+}
+
+#note-input{
+    width:60%;
+    height:80%;
+}
+
+
+#add-note {
+    width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-note:hover {
+    background-color: #45a049;
+}
