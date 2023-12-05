@@ -5,6 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const popupAmPmSelect = document.getElementById('popup-am-pm');
     const storedTimeValue = document.getElementById('stored-time-value');
     const openOptionsPageLink = document.getElementById('open-options-page');
+    const addContentButton = document.getElementById('buttonContainer-7');
+      
+    addContentButton.addEventListener('click', function () {
+          chrome.tabs.create({ url: 'newPage.html' });
+        });
 
     // Load the stored popup time and set the dropdown values
     chrome.storage.sync.get(['popupTime'], function (result) {
