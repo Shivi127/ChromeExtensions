@@ -12,6 +12,17 @@ document.addEventListener('DOMContentLoaded', function () {
         Medium: [],
         Small: []
     };
+    
+    // Load stored notes from Chrome storage
+    chrome.storage.sync.get(['noteData'], function (result) {
+        const storedNoteData = result.noteData;
+        if (storedNoteData) {
+            // Use stored notes data if available
+            Object.assign(noteData, storedNoteData);
+            // Display notes on initial load
+            displayNotes();
+        }
+    });
 
     addNoteButton.addEventListener('click', function () {
         const noteText = noteInput.value;
@@ -20,6 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (noteText.trim() !== '' && selectedTag) {
             // Add note to the corresponding tag
             noteData[selectedTag].push(noteText);
+
+            // Save notes to Chrome storage
+            chrome.storage.sync.set({ noteData }, function () {
+                if (chrome.runtime.lastError) {
+                    console.error('Error saving notes data:', chrome.runtime.lastError);
+                } else {
+                    console.log('Notes data saved:', noteData);
+                }
+            });
 
             // Display notes
             displayNotes();
