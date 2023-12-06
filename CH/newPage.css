@@ -107,6 +107,7 @@ li {
 
 .note-container{
     display: flex;
+    margin-left: 20px;
 }
 
 .radio-container label{
