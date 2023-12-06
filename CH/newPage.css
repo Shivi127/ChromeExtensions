@@ -24,6 +24,9 @@ h1 {
     width:33%
 }
 
+.button-container {
+    margin: 25px;
+}
 .tag-options label {
     display: inline-block;
     margin: 30%; /* Increase spacing between radio buttons */
