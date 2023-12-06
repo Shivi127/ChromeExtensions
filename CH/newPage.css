@@ -98,7 +98,9 @@ li {
     width: 100%; /* Occupy the full width of the list item */
 }
 
-
+#notes-container{
+    display: flex;
+}
 .radio-container label{
     padding: 2px;
 }
