@@ -104,6 +104,11 @@ li {
 #notes-container{
     display: flex;
 }
+
+.note-container{
+    display: flex;
+}
+
 .radio-container label{
     padding: 2px;
 }
@@ -133,4 +138,17 @@ li {
 
 #add-note:hover {
     background-color: #45a049;
+}
+
+.delete-button {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
 }

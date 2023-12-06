@@ -12,14 +12,14 @@ document.addEventListener('DOMContentLoaded', function () {
         Medium: [],
         Small: []
     };
-    
+
     // Load stored notes from Chrome storage
     chrome.storage.sync.get(['noteData'], function (result) {
         const storedNoteData = result.noteData;
         if (storedNoteData) {
             // Use stored notes data if available
             Object.assign(noteData, storedNoteData);
-            // Display notes on initial load
+            // Display notes on the initial load
             displayNotes();
         }
     });
@@ -78,10 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Display notes for the tag
             const notesList = document.createElement('ul');
-            notes.forEach(noteText => {
-                const noteElement = createNoteElement(noteText);
-                const listItem = document.createElement('li');
-                listItem.appendChild(noteElement);
+            notes.forEach((noteText, index) => {
+                const listItem = createNoteListItem(noteText, tag, index);
                 notesList.appendChild(listItem);
             });
 
@@ -92,10 +90,44 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function createNoteElement(noteText) {
+    function createNoteListItem(noteText, tag, index) {
+        const listItem = document.createElement('li');
+
+        const noteContainer = document.createElement('div');
+        noteContainer.classList.add('note-container');
+
         const noteElement = document.createElement('p');
         noteElement.textContent = noteText;
-        return noteElement;
+
+        const deleteButton = document.createElement('div');
+        deleteButton.classList.add('delete-button');
+        deleteButton.innerHTML = '&times;';
+        deleteButton.addEventListener('click', function () {
+            deleteNote(tag, index);
+        });
+
+        noteContainer.appendChild(noteElement);
+        noteContainer.appendChild(deleteButton);
+
+        listItem.appendChild(noteContainer);
+
+        return listItem;
+    }
+
+    function deleteNote(tag, index) {
+        // Remove the note from the corresponding tag
+        noteData[tag].splice(index, 1);
+
+        // Save updated notes to Chrome storage
+        chrome.storage.sync.set({ noteData }, function () {
+            if (chrome.runtime.lastError) {
+                console.error('Error saving notes data:', chrome.runtime.lastError);
+            } else {
+                console.log('Notes data saved:', noteData);
+                // Display updated notes
+                displayNotes();
+            }
+        });
     }
 
     // Initial display
