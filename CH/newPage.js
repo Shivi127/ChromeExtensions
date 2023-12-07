@@ -13,6 +13,25 @@ document.addEventListener('DOMContentLoaded', function () {
         Small: []
     };
 
+    const exportNotesButton = document.getElementById('export-notes-button');
+    exportNotesButton.addEventListener('click', exportNotesToFile);
+
+    // Function to export notes to a file
+    function exportNotesToFile() {
+        // Access the noteData and perform export logic here
+        const notesToExport = noteData;
+
+        // Create a Blob with the data and trigger a download
+        const blob = new Blob([JSON.stringify(notesToExport, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'notes-export.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
     // Load stored notes from Chrome storage
     chrome.storage.sync.get(['noteData'], function (result) {
         const storedNoteData = result.noteData;
