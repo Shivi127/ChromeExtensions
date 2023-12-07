@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedTag = getSelectedTag();
 
         if (noteText.trim() !== '' && selectedTag) {
-            // Add note to the corresponding tag
+            // Add to the corresponding tag
             noteData[selectedTag].push(noteText);
 
             // Save notes to Chrome storage
