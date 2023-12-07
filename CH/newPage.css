@@ -61,6 +61,7 @@ h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     display: -webkit-inline-box;
+    box-shadow: 2px 2px 1px #ced4da;
 }
 
 .tag-container2 {
@@ -75,6 +76,7 @@ h1 {
     display: flex;
     flex-direction: column; /* Display children in a column layout */
     align-items: center; /* Center children horizontally */
+    box-shadow: 2px 2px 1px #ced4da;
 }
 
 h2 {
