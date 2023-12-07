@@ -1,23 +1,90 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const saveButton = document.getElementById('save-button');
-    const popupTimeSelect = document.getElementById('popup-time');
+    const popupHourSelect = document.getElementById('popup-hour');
+    const popupMinuteSelect = document.getElementById('popup-minute');
+    const popupAmPmSelect = document.getElementById('popup-am-pm');
+    const storedTimeValue = document.getElementById('stored-time-value');
+    const addContentButton = document.getElementById('buttonContainer-7');
 
-    // Load the stored popup time and set the dropdown value
-    chrome.storage.sync.get(['popupTime'], function(result) {
+
+    addContentButton.addEventListener('click', function () {
+        chrome.tabs.create({ url: 'newPage.html' });
+    });
+
+    // Load the stored popup time and set the dropdown values
+    chrome.storage.sync.get(['popupTime'], function (result) {
         const storedTime = result.popupTime;
         if (storedTime) {
-            const formattedStoredTime = new Date(storedTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            popupTimeSelect.value = formattedStoredTime;
+            const storedDate = new Date(storedTime);
+            const storedHour = storedDate.getHours();
+            const storedMinute = storedDate.getMinutes();
+            const storedAmPm = storedHour >= 12 ? 'PM' : 'AM';
+
+            populateDropdown(popupHourSelect, 1, 12, storedHour % 12 || 12);
+            populateDropdown(popupMinuteSelect, 0, 59, storedMinute);
+            setDropdownValue(popupAmPmSelect, storedAmPm);
+
+            // Display the stored value underneath the dropdown
+            storedTimeValue.textContent = formatTime(storedHour, storedMinute, storedAmPm);
+        } else {
+            // Default value for 5:00 PM
+            setDropdownValue(popupHourSelect, '05');
+            setDropdownValue(popupMinuteSelect, '00');
+            setDropdownValue(popupAmPmSelect, 'PM');
+            storedTimeValue.textContent = 'Stored Time: 5:00 PM';
         }
     });
 
-    saveButton.addEventListener('click', function() {
-        const selectedTime = popupTimeSelect.value;
-        const [hours, minutes] = selectedTime.split(':');
-        const popupTime = new Date().setHours(hours, minutes);
+    saveButton.addEventListener('click', function () {
+        const selectedHour = popupHourSelect.value;
+        const selectedMinute = popupMinuteSelect.value;
+        const selectedAmPm = popupAmPmSelect.value;
 
-        chrome.storage.sync.set({ popupTime: popupTime }, function() {
+        // Convert selected values to 24-hour format
+        let hour24 = parseInt(selectedHour);
+        if (selectedAmPm === 'PM' && hour24 !== 12) {
+            hour24 += 12;
+        } else if (selectedAmPm === 'AM' && hour24 === 12) {
+            hour24 = 0;
+        }
+
+        const popupTime = new Date().setHours(hour24, selectedMinute);
+
+        chrome.storage.sync.set({ popupTime: popupTime }, function () {
             console.log('Popup time set:', new Date(popupTime).toLocaleTimeString());
+
+            // Display the stored value underneath the dropdown
+            storedTimeValue.textContent = formatTime(hour24, selectedMinute, selectedAmPm);
         });
     });
+
+    // Function to format time
+    function formatTime(hour, minute, amPm) {
+        const formattedHour = (hour % 12 || 12).toString();
+        const formattedMinute = minute.toString().padStart(2, '0');
+        const formattedAmPm = amPm.toLowerCase();
+        return `${formattedHour}:${formattedMinute} ${formattedAmPm}`;
+    }
+
+    // Function to populate a dropdown with options
+    function populateDropdown(selectElement, start, end, selectedValue) {
+        for (let i = start; i <= end; i++) {
+            const option = document.createElement('option');
+            const paddedValue = i < 10 ? '0' + i : '' + i;
+            option.value = paddedValue;
+            option.text = paddedValue;
+            selectElement.add(option);
+        }
+
+        // Set the selected value
+        setDropdownValue(selectElement, selectedValue);
+    }
+
+    // Function to set the dropdown value
+    function setDropdownValue(selectElement, value) {
+        const option = Array.from(selectElement.options).find(opt => opt.value === value);
+        if (option) {
+            option.selected = true;
+        }
+    }
 });

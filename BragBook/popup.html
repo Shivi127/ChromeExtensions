@@ -9,15 +9,29 @@
 </head>
 <body>
     <div id="popup-content">
-        <label for="popup-time">Select popup time:</label>
-        <select id="popup-time">
-            <option value="12:00">12:00 PM</option>
-            <option value="15:00">3:00 PM</option>
-            <option value="18:30">6:30 PM</option>
-            <!-- Add more options as needed -->
+
+         <div id="stored-time">Default Time: <span id="stored-time-value"></span></div>
+        
+        <label for="popup-hour">Hour:</label>
+        <select id="popup-hour"></select>
+
+        <label for="popup-minute">Minute:</label>
+        <select id="popup-minute"></select>
+
+        <label for="popup-am-pm">AM/PM:</label>
+        <select id="popup-am-pm">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
         </select>
-        <button id="save-button">Save</button>
+
+        <div class="button-container">
+            <button id="save-button">Save</button>
+        </div>
+        <div class="button-7 button-container" id="buttonContainer-7">
+        <a href="newPage.html" target="_blank" class="page">Add Content</a>
+        </div>
     </div>
+
     <script src="popup.js"></script>
 </body>
 </html>
