@@ -14,24 +14,49 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     const exportNotesButton = document.getElementById('export-notes-button');
-    exportNotesButton.addEventListener('click', exportNotesToFile);
+    exportNotesButton.addEventListener('click', exportNotesToMarkdown);
 
-    // Function to export notes to a file
-    function exportNotesToFile() {
+    // Function to convert notes to Markdown format
+    function exportNotesToMarkdown() {
         // Access the noteData and perform export logic here
         const notesToExport = noteData;
-
+    
+        // Convert notes to Markdown format
+        const markdownContent = convertNotesToMarkdown(notesToExport);
+    
+        // Get the current date for the file name
+        const currentDate = new Date().toLocaleDateString().replace(/\//g, '-');
+    
         // Create a Blob with the data and trigger a download
-        const blob = new Blob([JSON.stringify(notesToExport, null, 2)], { type: 'application/json' });
+        const blob = new Blob([markdownContent], { type: 'text/markdown' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'notes-export.json';
+    
+        // Set the file name to include the current date
+        a.download = `notes-${currentDate}.md`;
+    
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
     }
 
+    // Function to convert notes to Markdown format
+function convertNotesToMarkdown(notes) {
+    let markdownContent = '';
+
+    for (const [tag, notesList] of Object.entries(notes)) {
+        markdownContent += `## ${tag} Wins\n\n`;
+
+        notesList.forEach((note, index) => {
+            markdownContent += `- ${note}\n`;
+        });
+
+        markdownContent += '\n';
+    }
+
+    return markdownContent;
+}
     // Load stored notes from Chrome storage
     chrome.storage.sync.get(['noteData'], function (result) {
         const storedNoteData = result.noteData;
@@ -112,25 +137,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function createNoteListItem(noteText, tag, index) {
         const listItem = document.createElement('li');
         listItem.classList.add('note-list-item'); // Add a class for styling
-    
+
         const noteContainer = document.createElement('div');
         noteContainer.classList.add('note-container');
-    
+
         const noteElement = document.createElement('p');
         noteElement.textContent = noteText;
-    
+
         const deleteButton = document.createElement('div');
         deleteButton.classList.add('delete-button');
         deleteButton.innerHTML = '&times;';
         deleteButton.addEventListener('click', function () {
             deleteNote(tag, index);
         });
-    
+
         noteContainer.appendChild(noteElement);
         noteContainer.appendChild(deleteButton);
-    
+
         listItem.appendChild(noteContainer);
-    
+
         return listItem;
     }
 
