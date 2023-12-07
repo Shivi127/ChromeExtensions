@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
             setDropdownValue(popupMinuteSelect, '00');
             setDropdownValue(popupAmPmSelect, 'PM');
             storedTimeValue.textContent = 'Stored Time: 5:00 PM';
+            populateDropdown(popupHourSelect, 1, 12, 5 % 12 || 12);
+            populateDropdown(popupMinuteSelect, 0, 59, 0);
         }
     });
 
@@ -75,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
             option.text = paddedValue;
             selectElement.add(option);
         }
-
         // Set the selected value
         setDropdownValue(selectElement, selectedValue);
     }
