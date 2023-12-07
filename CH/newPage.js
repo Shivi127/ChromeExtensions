@@ -92,25 +92,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createNoteListItem(noteText, tag, index) {
         const listItem = document.createElement('li');
-
+        listItem.classList.add('note-list-item'); // Add a class for styling
+    
         const noteContainer = document.createElement('div');
         noteContainer.classList.add('note-container');
-
+    
         const noteElement = document.createElement('p');
         noteElement.textContent = noteText;
-
+    
         const deleteButton = document.createElement('div');
         deleteButton.classList.add('delete-button');
         deleteButton.innerHTML = '&times;';
         deleteButton.addEventListener('click', function () {
             deleteNote(tag, index);
         });
-
+    
         noteContainer.appendChild(noteElement);
         noteContainer.appendChild(deleteButton);
-
+    
         listItem.appendChild(noteContainer);
-
+    
         return listItem;
     }
 

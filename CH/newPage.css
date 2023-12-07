@@ -105,11 +105,6 @@ li {
     display: flex;
 }
 
-.note-container{
-    display: flex;
-    margin-left: 20px;
-}
-
 .radio-container label{
     padding: 2px;
 }
@@ -141,15 +136,28 @@ li {
     background-color: #45a049;
 }
 
+
+.note-container {
+    word-wrap: break-word; /* Break long words to prevent overflow */
+    max-height: 100px; /* Set a maximum height for the note container */
+    overflow-y: auto; /* Add vertical scrollbar if the content exceeds the maximum height */
+    padding: 10px; /* Add padding for better visual appearance */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px; /* Adjust the spacing between note containers */
+}
+
 .delete-button {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: red;
-    color: white;
-    text-align: center;
-    font-size: 16px;
+    display: inline-block; /* Make sure the delete button stays on the same line */
     cursor: pointer;
-    margin: 10px;
+    font-size: 20px;
+    color: red;
+    margin-left: 8px; /* Add some space between the note text and the delete button */
+}
+
+/* Style for the list item */
+.note-list-item {
+    list-style-type: disc;
 }
