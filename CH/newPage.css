@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-    color: #007bff;
+    color: #3E436D;
 }
 
 .tag-options {
@@ -25,13 +25,13 @@ h1 {
 }
 
 .button-container {
-    margin: 25px;
+    margin: 5px;
 }
 .tag-options label {
     display: inline-block;
     margin: 30%; /* Increase spacing between radio buttons */
     padding: 8px 15px;
-    background-color: #007bff;
+    background-color: #3E436D;
     color: #ffffff;
     border-radius: 4px;
     cursor: pointer;
@@ -76,11 +76,12 @@ h1 {
     display: flex;
     flex-direction: column; /* Display children in a column layout */
     align-items: center; /* Center children horizontally */
-    box-shadow: 2px 2px 1px #ced4da;
+    box-shadow: 2px 2px 1px #3E436D;
+    
 }
 
 h2 {
-    color: #007bff;
+    color: #3E436D;
 }
 
 ul {
@@ -126,7 +127,7 @@ li {
     width: 50%;
     padding: 10px;
     font-size: 14px;
-    background-color: #4caf50;
+    background-color: #3E436D;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -134,7 +135,26 @@ li {
     transition: background-color 0.3s;
 }
 
+
 #add-note:hover {
+    background-color: #45a049;
+}
+
+
+#export-notes-button {
+    width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #94C0E9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+#export-notes-button:hover {
     background-color: #45a049;
 }
 
@@ -149,7 +169,7 @@ li {
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 8px; /* Adjust the spacing between note containers */
-    box-shadow: 2px 2px 1px #91C6FF;
+    box-shadow: 2px 2px 1px #ced4da;
 }
 
 .delete-button {
