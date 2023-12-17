@@ -189,7 +189,7 @@ li {
     width: 50%;
     padding: 10px;
     font-size: 14px;
-    background-color: #6D3E43;
+    background-color: #262944;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -198,5 +198,5 @@ li {
 }
 
 #delete-all-notes:hover {
-    background-color: #AC8286; /* Darker red on hover */
+    background-color: #6A6E90; /* Darker red on hover */
 }
