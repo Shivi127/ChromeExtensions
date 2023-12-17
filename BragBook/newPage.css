@@ -184,3 +184,19 @@ li {
 .note-list-item {
     list-style-type: disc;
 }
+
+#delete-all-notes {
+    width: 50%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #6D3E43;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#delete-all-notes:hover {
+    background-color: #AC8286; /* Darker red on hover */
+}
