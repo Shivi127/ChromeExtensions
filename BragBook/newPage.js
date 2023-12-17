@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const MediumTag = document.getElementById('tag-medium-win');
     const SmallTag = document.getElementById('tag-big-win');
     const addNoteButton = document.getElementById('add-note');
+    const exportNotesButton = document.getElementById('export-notes-button');
+    const deleteAllNotesButton = document.getElementById('delete-all-notes');
     const notesContainer = document.getElementById('notes-container');
 
     // Store notes in an object where keys are tags and values are arrays of notes
@@ -13,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         Small: []
     };
 
-    const exportNotesButton = document.getElementById('export-notes-button');
     exportNotesButton.addEventListener('click', exportNotesToMarkdown);
 
     // Function to convert notes to Markdown format
@@ -91,6 +92,25 @@ function convertNotesToMarkdown(notes) {
             // Clear input field
             noteInput.value = '';
         }
+    });
+
+    deleteAllNotesButton.addEventListener('click', function () {
+        // Clear all notes
+        for (const tag in noteData) {
+            noteData[tag] = [];
+        }
+
+        // Save notes to Chrome storage
+        chrome.storage.sync.set({ noteData }, function () {
+            if (chrome.runtime.lastError) {
+                console.error('Error saving notes data:', chrome.runtime.lastError);
+            } else {
+                console.log('All notes deleted:', noteData);
+            }
+        });
+
+        // Display notes
+        displayNotes();
     });
 
     function getSelectedTag() {
