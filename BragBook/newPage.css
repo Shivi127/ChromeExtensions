@@ -1,8 +1,15 @@
+:root {
+    --color1: #3E436D; 
+    --color2: #94C0E9; 
+    --body-background : #f8f9fa;
+    --shadow : #ced4da;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     padding: 20px;
     text-align: center;
-    background-color: #f8f9fa;
+    background-color: var(--body-background);
 }
 
 #planner-content {
@@ -11,7 +18,7 @@ body {
 }
 
 h1 {
-    color: #3E436D;
+    color: var(--color1);
 }
 
 .tag-options {
@@ -31,7 +38,7 @@ h1 {
     display: inline-block;
     margin: 30%; /* Increase spacing between radio buttons */
     padding: 8px 15px;
-    background-color: #3E436D;
+    background-color: var(--color1);
     color: #ffffff;
     border-radius: 4px;
     cursor: pointer;
@@ -54,21 +61,21 @@ h1 {
     display: inline-block;
     margin: 20px;
     padding: 15px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--shadow)
     border-radius: 8px;
     width: 300px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     display: -webkit-inline-box;
-    box-shadow: 2px 2px 1px #ced4da;
+    box-shadow: 2px 2px 1px var(--shadow)
 }
 
 .tag-container2 {
     display: inline-block;
     margin: 20px;
     padding: 15px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--shadow)
     border-radius: 8px;
     width: 300px;
     background-color: #ffffff;
@@ -76,12 +83,12 @@ h1 {
     display: flex;
     flex-direction: column; /* Display children in a column layout */
     align-items: center; /* Center children horizontally */
-    box-shadow: 2px 2px 1px #3E436D;
+    box-shadow: 2px 2px 1px var(--color1);
     
 }
 
 h2 {
-    color: #3E436D;
+    color: var(--color1);
 }
 
 ul {
@@ -96,7 +103,7 @@ li {
 }
 
 .note {
-    border: 1px solid #ced4da;
+    border: 1px solid var(--shadow)
     padding: 10px;
     border-radius: 4px;
     background-color: #ffffff;
@@ -127,7 +134,7 @@ li {
     width: 50%;
     padding: 10px;
     font-size: 14px;
-    background-color: #3E436D;
+    background-color: var(--color1);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -145,7 +152,7 @@ li {
     width: 50%;
     padding: 10px;
     font-size: 14px;
-    background-color: #94C0E9;
+    background-color: var(--color2);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -164,12 +171,12 @@ li {
     max-height: 100px; /* Set a maximum height for the note container */
     overflow-y: auto; /* Add vertical scrollbar if the content exceeds the maximum height */
     padding: 10px; /* Add padding for better visual appearance */
-    border: 1px solid #ced4da;
+    border: 1px solid var(--shadow)
     border-radius: 4px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 8px; /* Adjust the spacing between note containers */
-    box-shadow: 2px 2px 1px #ced4da;
+    box-shadow: 2px 2px 1px var(--shadow)
 }
 
 .delete-button {
