@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Time Popup Extension",
+    "name": "BragBook",
     "version": "1.0",
-    "description": "Popup at a specific time",
+    "description": "Popup Extension to track your daily achivements.",
     "permissions": ["storage", "alarms", "activeTab"],
     "action": {
       "default_popup": "popup.html",
