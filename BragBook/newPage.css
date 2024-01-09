@@ -6,6 +6,7 @@
     --title-color: #0E0B07;
     --font-family: 'Pacifico';
     --hover-color: #5c3d29;
+    --box-shadow: #594B12;
 }
 
 body {
@@ -86,12 +87,12 @@ h1 {
     display: flex;
     flex-direction: column; /* Display children in a column layout */
     align-items: center; /* Center children horizontally */
-    box-shadow: 2px 2px 1px var(--color1);
+    box-shadow: 2px 2px 1px var(--box-shadow)
     
 }
 
 h2 {
-    color: var(--color1);
+    color: var(--title-color);
 }
 
 ul {
