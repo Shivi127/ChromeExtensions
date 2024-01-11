@@ -1,12 +1,16 @@
 :root {
-    --color1: #031B80; 
-    --color2: #0475E6; 
+    --color1: #03045e; 
+    --color2: #0077b6; 
     --body-background : #f8f9fa;
     --shadow : #ced4da;
+    --title-color: #0E0B07;
+    --font-family: 'Pacifico';
+    --hover-color: #023e8a;
+    --box-shadow: #03045e;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-family), sans-serif;
     padding: 20px;
     text-align: center;
     background-color: var(--body-background);
@@ -18,7 +22,7 @@ body {
 }
 
 h1 {
-    color: var(--color1);
+    color: var(--title-color)
 }
 
 .tag-options {
@@ -42,7 +46,7 @@ h1 {
     color: #ffffff;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: var(--background-color) 0.3s ease;
 }
 
 .tag-options label:hover {
@@ -83,12 +87,12 @@ h1 {
     display: flex;
     flex-direction: column; /* Display children in a column layout */
     align-items: center; /* Center children horizontally */
-    box-shadow: 2px 2px 1px var(--color1);
+    box-shadow: 2px 2px 1px var(--box-shadow)
     
 }
 
 h2 {
-    color: var(--color1);
+    color: var(--title-color);
 }
 
 ul {
@@ -144,7 +148,7 @@ li {
 
 
 #add-note:hover {
-    background-color: #45a049;
+    background-color: var(--hover-color);
 }
 
 
@@ -162,7 +166,7 @@ li {
 
 
 #export-notes-button:hover {
-    background-color: #45a049;
+    background-color: var(--hover-color);
 }
 
 
