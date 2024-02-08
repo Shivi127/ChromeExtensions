@@ -3,7 +3,7 @@
     "name": "BragBook",
     "version": "1.0",
     "description": "Popup Extension to track your daily achievements.",
-    "permissions": ["storage", "alarms", "activeTab"],
+    "permissions": ["storage", "alarms"],
     "action": {
       "default_popup": "popup.html",
       "default_icon": {

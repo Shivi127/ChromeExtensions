@@ -211,3 +211,21 @@ li {
 #delete-all-notes:hover {
     background-color: #6A6E90; /* Darker red on hover */
 }
+
+.button-container a {
+    display: inline-block;
+    width: 49%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #023e8a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline for anchor element */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-container a:hover {
+    background-color: #6A6E90; /* Darker red on hover */
+}
